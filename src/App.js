@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
+import logo from './logo.svg';
 import firebase from './Firebase';
 
 class App extends Component {
@@ -37,34 +38,29 @@ class App extends Component {
   render() {
     return (
       <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              BOARD LIST
-            </h3>
-          </div>
-          <div class="panel-body">
-            <h4><Link to="/create">Add Board</Link></h4>
-            <table class="table table-stripe">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Author</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.boards.map(board =>
-                  <tr>
-                    <td><Link to={`/show/${board.key}`}>{board.title}</Link></td>
-                    <td>{board.description}</td>
-                    <td>{board.author}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+        <div class="py-5 text-center">
+          <img src={logo} className="App-logo" alt="logo" style={{height: '240px'}} />
+          <h1>React board</h1>
+          <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
         </div>
+
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Latest topics</span>
+          <Link to="/create" class="btn btn-primary">Add Board</Link>
+          {/* <span class="badge badge-secondary badge-pill">3</span> */}
+        </h4>
+        <ul className="list-group mb-3">
+          {this.state.boards.map(board =>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <Link to={`/show/${board.key}`}><h6 class="my-0">{board.title}</h6></Link>
+              <small class="text-muted">{board.description}</small>
+            </div>
+            <span class="text-muted">{board.author}</span>
+          </li>
+          )}
+        </ul>
+        
       </div>
     );
   }

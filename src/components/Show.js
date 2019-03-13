@@ -39,20 +39,20 @@ class Show extends Component {
   render() {
     return (
       <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><Link to="/">Boards</Link></li>
+                <li class="breadcrumb-item active" aria-current="page">{this.state.board.title}</li>
+            </ol>
+        </nav>
+        <div class="py-5">
+            <h1>{this.state.board.title}</h1>
+            <p class="lead">{this.state.board.author}</p>
+            <p>{this.state.board.description}</p>
+        </div>
+
         <div class="panel panel-default">
-          <div class="panel-heading">
-          <h4><Link to="/">Board List</Link></h4>
-            <h3 class="panel-title">
-              {this.state.board.title}
-            </h3>
-          </div>
           <div class="panel-body">
-            <dl>
-              <dt>Description:</dt>
-              <dd>{this.state.board.description}</dd>
-              <dt>Author:</dt>
-              <dd>{this.state.board.author}</dd>
-            </dl>
             <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
           </div>

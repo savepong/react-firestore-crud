@@ -63,33 +63,39 @@ class Edit extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              EDIT BOARD
-            </h3>
-          </div>
-          <div class="panel-body">
-            <h4><Link to={`/show/${this.state.key}`} class="btn btn-primary">Board List</Link></h4>
-            <form onSubmit={this.onSubmit}>
-              <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.onChange} placeholder="Title" />
-              </div>
-              <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" class="form-control" name="description" value={this.state.description} onChange={this.onChange} placeholder="Description" />
-              </div>
-              <div class="form-group">
-                <label for="author">Author:</label>
-                <input type="text" class="form-control" name="author" value={this.state.author} onChange={this.onChange} placeholder="Author" />
-              </div>
-              <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-          </div>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><Link to="/">Boards</Link></li>
+                    <li class="breadcrumb-item active" aria-current="page">{this.state.title}</li>
+                </ol>
+            </nav>
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                EDIT BOARD
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form onSubmit={this.onSubmit}>
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.onChange} placeholder="Title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input type="text" class="form-control" name="description" value={this.state.description} onChange={this.onChange} placeholder="Description" />
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author:</label>
+                        <input type="text" class="form-control" name="author" value={this.state.author} onChange={this.onChange} placeholder="Author" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <Link to={`/show/${this.state.key}`} class="btn btn-secondary">View</Link>
+                </form>
+            </div>
+            </div>
         </div>
-      </div>
     );
   }
 }
